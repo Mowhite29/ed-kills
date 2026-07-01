@@ -6,23 +6,38 @@ export default function Home() {
     return (
         <>
             <Head>
-                <meta name='application-name' content='PWA App' />
-                <meta name='apple-mobile-web-app-capable' content='yes' />
+                <meta charSet='UTF-8' />
                 <meta
-                    name='apple-mobile-web-app-status-bar-style'
-                    content='default'
+                    name='viewport'
+                    content='width=device-width, initial-scale=1.0'
                 />
-                <meta name='apple-mobile-web-app-title' content='PWA App' />
-                <meta name='description' content='Best PWA App in the world' />
-                <meta name='format-detection' content='telephone=no' />
-                <meta name='mobile-web-app-capable' content='yes' />
+
+                <title>Elite Dangerous kill tracker</title>
+
                 <meta
-                    name='msapplication-config'
-                    content='/icons/browserconfig.xml'
+                    name='description'
+                    content='Elite Dangerous kill tracker is a web application that parses Elite Dangerous journal files to analyse combat history, bounties, kill statistics and system activity.'
                 />
-                <meta name='msapplication-TileColor' content='#2B5797' />
-                <meta name='msapplication-tap-highlight' content='no' />
-                <meta name='theme-color' content='#000000' />
+
+                <meta
+                    name='keywords'
+                    content='Elite Dangerous, journal parser, combat telemetry, kill tracker, bounty tracker, React, JavaScript'
+                />
+
+                <meta name='author' content='Your Name' />
+                <meta name='theme-color' content='#020617' />
+
+                <link rel='icon' href='/favicon.ico' />
+
+                <meta
+                    property='og:title'
+                    content='Elite Dangerous kill tracker'
+                />
+                <meta
+                    property='og:description'
+                    content='Analyse Elite Dangerous journal files and visualise combat statistics with a futuristic HUD interface.'
+                />
+                <meta property='og:type' content='website' />
             </Head>
             <div className='font-sans min-h-screen bg-gray-900 text-slate-100 '>
                 <main className='flex flex-col items-center sm:items-start gap-8'>
