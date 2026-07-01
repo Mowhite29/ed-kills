@@ -3427,6 +3427,10 @@ snapshots:
             '@eslint/core': 0.17.0
             levn: 0.4.1
 
+    '@heroicons/react@2.2.0(react@19.2.4)':
+        dependencies:
+            react: 19.2.4
+
     '@humanfs/core@0.19.2':
         dependencies:
             '@humanfs/types': 0.15.0
