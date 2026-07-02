@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 export default function Uploader() {
     const [file, setFile] = useState<FileList | null>(null);
 
-    const handler = (e: { target: { files: File[]; }; }) => {
+    const handler = (e: { target: { files: File[] } }) => {
         const newFile: FileList = {
             ...file!,
         };
