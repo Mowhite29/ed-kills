@@ -12,6 +12,7 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import TableDisplay from './TableDisplay';
+import { Textfit } from 'react-textfit';
 
 type EnemyRanks =
     | 'competent'
@@ -127,13 +128,17 @@ export default function Main() {
     const [system, setSystem] = useState<TopSystem>();
     const [topStats, setTopStats] = useState<TopStats>();
 
+    const [killsBar, setKillsBar] = useState<number>(50);
+    const [bountyBar, setBountyBar] = useState<number>(20);
+    const [shipKillsBar, setShipKillsBar] = useState<number>(85);
+
     const parse = async (logFiles: FileList) => {
         const events = await parseLogFiles(logFiles);
         setEvents(events);
         console.log(events);
         const stats = await parseEvents(events);
         const record = stats.killRecord;
-        console.log(stats.topSystem);
+        console.log(stats);
         console.log(record);
 
         const dataTemp: TableData[] = Object.entries(record).map(
@@ -159,6 +164,10 @@ export default function Main() {
             bounty: stats.totalBounties,
             ship: stats.topShips[0],
         });
+
+        setKillsBar((stats.totalKills / 3000) * 100);
+        setBountyBar((stats.totalBounties / 1000000000) * 100);
+        setShipKillsBar((stats.topShips[0].kills / 200) * 100);
     };
 
     const handler = (e: React.SyntheticEvent) => {
@@ -252,11 +261,18 @@ export default function Main() {
                             </p>
 
                             <p className='mt-3 text-4xl font-light text-cyan-100'>
-                                {topStats?.kills ? topStats?.kills : 100}
+                                {topStats?.kills != undefined
+                                    ? topStats?.kills
+                                    : 100}
                             </p>
 
                             <div className='mt-4 h-1 rounded-full bg-cyan-500/20 overflow-hidden'>
-                                <div className='h-full w-3/4 bg-cyan-400' />
+                                <div
+                                    className='h-full w-3/4 bg-cyan-400'
+                                    style={{
+                                        width: `${killsBar}%`,
+                                    }}
+                                />
                             </div>
                         </div>
 
@@ -266,15 +282,20 @@ export default function Main() {
                                 Bounty Collected
                             </p>
 
-                            <p className='mt-3 text-3xl font-light text-purple-200 break-words'>
-                                {topStats?.bounty
+                            <p className='mt-3 text-3xl font-light text-purple-200 wrap-break-word'>
+                                {topStats?.bounty != undefined
                                     ? topStats?.bounty
-                                    : 100000000}{' '}
+                                    : 200000000}{' '}
                                 CR
                             </p>
 
                             <div className='mt-4 h-1 rounded-full bg-purple-500/20 overflow-hidden'>
-                                <div className='h-full w-4/5 bg-purple-400' />
+                                <div
+                                    className='h-full bg-purple-400'
+                                    style={{
+                                        width: `${bountyBar}%`,
+                                    }}
+                                />
                             </div>
                         </div>
 
@@ -291,14 +312,19 @@ export default function Main() {
                             </h3>
 
                             <p className='mt-2 text-sm uppercase tracking-widest text-amber-300'>
-                                {topStats?.ship.kills
+                                {topStats?.ship.kills != undefined
                                     ? topStats?.ship.kills
-                                    : '200'}{' '}
+                                    : '170'}{' '}
                                 Eliminations
                             </p>
 
                             <div className='mt-4 h-1 rounded-full bg-amber-500/20 overflow-hidden'>
-                                <div className='h-full w-2/3 bg-amber-400' />
+                                <div
+                                    className='h-full bg-amber-400'
+                                    style={{
+                                        width: `${shipKillsBar}%`,
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
@@ -345,11 +371,14 @@ export default function Main() {
                                             Primary Kill Zone
                                         </p>
 
-                                        <h2 className='mt-1 text-xl sm:text-2xl lg:text-3xl font-light tracking-[0.15em] uppercase text-cyan-100 break-words'>
-                                            {system?.name
-                                                ? system?.name
-                                                : 'Sol'}
-                                        </h2>
+                                        <Textfit
+                                            mode='multi'
+                                            min={18}
+                                            max={30}
+                                            className='mt-1 uppercase text-cyan-100 font-light tracking-[0.15em]'
+                                        >
+                                            {system?.name ?? 'Sol'}
+                                        </Textfit>
                                     </div>
 
                                     <div className='sm:text-right'>
@@ -358,7 +387,7 @@ export default function Main() {
                                         </p>
 
                                         <p className='text-green-400 font-semibold tracking-widest'>
-                                            {system?.kills
+                                            {system?.kills != undefined
                                                 ? system?.kills < 11
                                                     ? 'LOW'
                                                     : system?.kills < 26
@@ -380,7 +409,7 @@ export default function Main() {
                                         </p>
 
                                         <p className='mt-2 text-2xl sm:text-3xl font-light text-cyan-200'>
-                                            {system?.kills
+                                            {system?.kills != undefined
                                                 ? system?.kills
                                                 : 148}
                                         </p>
@@ -392,7 +421,7 @@ export default function Main() {
                                         </p>
 
                                         <p className='mt-2 text-lg sm:text-xl font-light text-purple-300 break-words'>
-                                            {system?.bounty
+                                            {system?.bounty != undefined
                                                 ? system?.bounty
                                                 : 42350000}{' '}
                                             CR
@@ -415,7 +444,7 @@ export default function Main() {
                                             </span>
 
                                             <span className='text-cyan-300 text-sm'>
-                                                {system?.ship.kills
+                                                {system?.ship.kills != undefined
                                                     ? system?.ship.kills
                                                     : 37}{' '}
                                                 Eliminations
@@ -672,10 +701,14 @@ async function parseEvents(events: Events[]) {
     const day = lastVisit.getDate();
 
     const topSystem = {
-        name: topSystems[0].name,
-        kills: topSystems[0].specs.kills,
-        bounty: topSystems[0].specs.bounty,
-        ship: systemShips[0],
+        name: topSystems[0].specs.kills === 0 ? 'NO KILLS' : topSystems[0].name,
+        kills: topSystems[0].specs.kills === 0 ? 0 : topSystems[0].specs.kills,
+        bounty:
+            topSystems[0].specs.kills === 0 ? 0 : topSystems[0].specs.bounty,
+        ship:
+            topSystems[0].specs.kills === 0
+                ? { name: 'NO KILLS', kills: 0 }
+                : systemShips[0],
         lastVisit: `${day}-${month}-${year + 1286}`,
     };
 
@@ -690,7 +723,10 @@ async function parseEvents(events: Events[]) {
     return {
         killRecord: killRecord,
         topSystem: topSystem,
-        topShips: topShips,
+        topShips:
+            topShips.length != 0 && topShips[0].kills != 0
+                ? topShips
+                : [{ name: 'NO KILLS', kills: 0 }],
         totalBounties: totalBounties,
         totalKills: totalKills,
     };
