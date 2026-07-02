@@ -498,6 +498,55 @@ export default function Main() {
                     </div>
                 </div>
             </div>
+            <div className='fixed bottom-0 left-0 w-full border-t border-cyan-500/20 bg-black/60 backdrop-blur-md px-4 py-2 flex justify-between items-center text-xs uppercase tracking-widest text-slate-400'>
+                <div className='flex h-10 items-center justify-between px-6 text-[11px] uppercase tracking-[0.2em] text-slate-400 w-full'>
+                    {/* Left */}
+                    <div className='flex items-center gap-3'>
+                        <div className='flex items-center gap-2'>
+                            <span className='h-2 w-2 rounded-full bg-green-400 animate-pulse' />
+                            <span className='text-green-300'>
+                                System Online
+                            </span>
+                        </div>
+
+                        <span className='text-slate-600'>|</span>
+
+                        <span className='text-cyan-300'>Combat Telemetry</span>
+
+                        <span className='text-slate-600'>v1.0.0</span>
+                    </div>
+
+                    {/* Right */}
+                    <div className='flex items-center gap-6'>
+                        <a
+                            href='https://moseswhite.info'
+                            target='_blank'
+                            rel='noreferrer'
+                            className='transition hover:text-cyan-200'
+                        >
+                            Portfolio
+                        </a>
+
+                        <a
+                            href='https://github.com/Mowhite29/ed-kills'
+                            target='_blank'
+                            rel='noreferrer'
+                            className='transition hover:text-cyan-200'
+                        >
+                            GitHub
+                        </a>
+
+                        <a
+                            href='https://github.com/Mowhite29/ed-kills/issues'
+                            target='_blank'
+                            rel='noreferrer'
+                            className='transition hover:text-cyan-200'
+                        >
+                            Report Issue
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
