@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'Elite Dangerous kill tracker',
+    title: 'Combat Telemetery | Elite Dangerous',
     description: 'Tool to keep track of your kills in the game Elite Dangerous',
 };
 

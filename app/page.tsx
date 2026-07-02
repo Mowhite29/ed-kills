@@ -12,11 +12,11 @@ export default function Home() {
                     content='width=device-width, initial-scale=1.0'
                 />
 
-                <title>Elite Dangerous kill tracker</title>
+                <title>Combat Telemetery | Elite Dangerous</title>
 
                 <meta
                     name='description'
-                    content='Elite Dangerous kill tracker is a web application that parses Elite Dangerous journal files to analyse combat history, bounties, kill statistics and system activity.'
+                    content='Combat Telemetery for Elite Dangerous is a web application that parses Elite Dangerous journal files to analyse combat history, bounties, kill statistics and system activity.'
                 />
 
                 <meta
@@ -31,7 +31,7 @@ export default function Home() {
 
                 <meta
                     property='og:title'
-                    content='Elite Dangerous kill tracker'
+                    content='Combat Telemetery | Elite Dangerous'
                 />
                 <meta
                     property='og:description'
