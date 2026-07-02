@@ -709,7 +709,7 @@ async function parseEvents(events: Events[]) {
             topSystems[0].specs.kills === 0
                 ? { name: 'NO KILLS', kills: 0 }
                 : systemShips[0],
-        lastVisit: `${day}-${month}-${year + 1286}`,
+        lastVisit: `${day}-${month + 1}-${year + 1286}`,
     };
 
     let topShips = Object.keys(shipType).map((ship) => ({
