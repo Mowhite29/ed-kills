@@ -1,6 +1,7 @@
 //import Image from 'next/image';
 import Head from 'next/head';
 import Main from './Components/Main';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function Home() {
     return (
@@ -39,6 +40,7 @@ export default function Home() {
                 />
                 <meta property='og:type' content='website' />
             </Head>
+            <Analytics />
             <div className='font-sans min-h-screen bg-gray-900 text-slate-100 '>
                 <main className='flex flex-col items-center sm:items-start gap-8'>
                     <Main />
