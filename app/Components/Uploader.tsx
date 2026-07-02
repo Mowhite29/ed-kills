@@ -4,18 +4,11 @@ import { useEffect, useState } from 'react';
 export default function Uploader() {
     const [file, setFile] = useState<FileList | null>(null);
 
-    useEffect(() => {
-        //console.log(file)
-    }, [file]);
-
-    const handler = (e) => {
-        console.log(file);
-        const newFile = {
-            ...file,
-            //...e.target.files
+    const handler = (e: { target: { files: File[]; }; }) => {
+        const newFile: FileList = {
+            ...file!,
         };
         newFile[Object.keys(file!).length] = e.target.files[0];
-        console.log(newFile);
         setFile(newFile);
     };
 
