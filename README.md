@@ -11,17 +11,21 @@ Combat Telemetry parses Elite Dangerous journal files to extract combat events, 
 
 ![Demo](./docs/screenshots/gif.gif)
 
-[`Live demo`](https://combat-telemetry-elite-dangerous.vercel.app/)
+[Live demo](https://combat-telemetry-elite-dangerous.vercel.app/)
 
-[`Repository`](https://github.com/Mowhite29/ed-kills.git)
+[Repository](https://github.com/Mowhite29/ed-kills.git)
 
-[`A sample Elite Dangerous journal file for testing`](./docs/sample-journal-file.log)
+[A sample Elite Dangerous journal file for testing](./docs/sample-journal-file.log)
 
 ## Screenshots
 
 ![Dashboard](./docs/screenshots/home.png)
 ![Combat Statistics](./docs/screenshots/userData.png)
 ![Mobile Warning](./docs/screenshots/mobile.png)
+
+## Change Log
+
+ [Change Log](./docs/CHANGE_LOG.md)
 
 ## Features
 
