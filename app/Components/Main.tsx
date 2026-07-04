@@ -135,11 +135,8 @@ export default function Main() {
     const parse = async (logFiles: FileList) => {
         const events = await parseLogFiles(logFiles);
         setEvents(events);
-        console.log(events);
         const stats = await parseEvents(events);
         const record = stats.killRecord;
-        console.log(stats);
-        console.log(record);
 
         const dataTemp: TableData[] = Object.entries(record).map(
             ([x, inner]) => ({
@@ -305,7 +302,7 @@ export default function Main() {
                                 Primary Target
                             </p>
 
-                            <h3 className='mt-3 text-2xl font-light text-amber-100 break-words'>
+                            <h3 className='mt-3 text-2xl font-light text-amber-100 wrap-break-word'>
                                 {topStats?.ship.name
                                     ? topStats?.ship.name.replaceAll('_', ' ')
                                     : 'anaconda'}
@@ -420,7 +417,7 @@ export default function Main() {
                                             Bounty Collected
                                         </p>
 
-                                        <p className='mt-2 text-lg sm:text-xl font-light text-purple-300 break-words'>
+                                        <p className='mt-2 text-lg sm:text-xl font-light text-purple-300 wrap-break-word'>
                                             {system?.bounty != undefined
                                                 ? system?.bounty
                                                 : 42350000}{' '}
@@ -457,7 +454,7 @@ export default function Main() {
                                             Last Recorded Engagement
                                         </p>
 
-                                        <p className='mt-2 text-sm sm:text-base text-cyan-200 break-words'>
+                                        <p className='mt-2 text-sm sm:text-base text-cyan-200 wrap-break-word'>
                                             {system?.lastVisit
                                                 ? system?.lastVisit
                                                 : '14-5-3311'}
@@ -492,7 +489,7 @@ export default function Main() {
                                     Signal Noise
                                 </div>
 
-                                <div className='h-24 bg-gradient-to-t from-purple-500/10 to-transparent rounded' />
+                                <div className='h-24 bg-linear-to-t from-purple-500/10 to-transparent rounded' />
                             </div>
                         </aside>
                     </div>

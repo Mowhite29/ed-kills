@@ -25,7 +25,7 @@ Combat Telemetry parses Elite Dangerous journal files to extract combat events, 
 
 ## Change Log
 
- [Change Log](./docs/CHANGE_LOG.md)
+[Change Log](./docs/CHANGE_LOG.md)
 
 ## Features
 
