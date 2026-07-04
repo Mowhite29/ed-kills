@@ -6,6 +6,6 @@
 
 ## 03-07-2026 v1.0.1
 
-## Fixes
+### Fixes
 
 - Mobile footer now contains only links for better legibility
