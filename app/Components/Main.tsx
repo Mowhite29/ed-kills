@@ -222,7 +222,7 @@ export default function Main() {
                     </div>
                 </div>
             </div>
-            <div className='hidden md:block'>
+            <div className='hidden md:block md:pb-10'>
                 {/* HUD GRID OVERLAY */}
                 <div className='pointer-events-none absolute inset-0 opacity-10 bg-[linear-gradient(rgba(34,211,238,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.2)_1px,transparent_1px)] bg-[size:60px_60px]' />
 
@@ -501,7 +501,7 @@ export default function Main() {
             <div className='fixed bottom-0 left-0 w-full border-t border-cyan-500/20 bg-black/60 backdrop-blur-md px-4 py-2 flex justify-between items-center text-xs uppercase tracking-widest text-slate-400'>
                 <div className='flex h-10 items-center justify-between px-6 text-[11px] uppercase tracking-[0.2em] text-slate-400 w-full'>
                     {/* Left */}
-                    <div className='flex items-center gap-3'>
+                    <div className='items-center gap-3 hidden md:block'>
                         <div className='flex items-center gap-2'>
                             <span className='h-2 w-2 rounded-full bg-green-400 animate-pulse' />
                             <span className='text-green-300'>
